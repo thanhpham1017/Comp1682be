@@ -45,7 +45,7 @@ router.get('/blogger', verifyToken, checkAdmin, async (req, res) => {
 });
 
 
-router.get('/add', verifyToken, checkAdmin, async (req, res) => {
+router.get('/blogger/add', verifyToken, checkAdmin, async (req, res) => {
     try{
         res.status(200).json({ success: true, message: "Render add blogger form"});
     }catch(error){
@@ -139,7 +139,7 @@ router.delete('/blogger/delete/:id', verifyToken, checkAdmin, async (req, res) =
 //---------------------------------------------------------------------------
 //edit admin
 // Render form for editing a specific admin
-router.get('/edit/:id', verifyToken, checkAdmin, async (req, res) => {
+router.get('/blogger/edit/:id', verifyToken, checkAdmin, async (req, res) => {
     try {
         // Fetch admin details by ID
         const bloggerId = req.params.id;
@@ -232,7 +232,7 @@ router.get('/blogger/profile', verifyToken, checkBlogger, async (req, res) => {
     }
 });
 
-router.get('/editBlogger/:id', verifyToken, checkBlogger, async (req, res) => {
+router.get('/blogger/editBlogger/:id', verifyToken, checkBlogger, async (req, res) => {
     const bloggerId = req.params.id;
     const blogger = await BloggerModel.findById(bloggerId);
     if (!blogger) {
@@ -255,7 +255,7 @@ router.get('/editBlogger/:id', verifyToken, checkBlogger, async (req, res) => {
     
 });
 
-router.post('/editBlogger/:id', verifyToken, checkBlogger, upload.single('image'), async (req, res) => {
+router.post('/blogger/editBlogger/:id', verifyToken, checkBlogger, upload.single('image'), async (req, res) => {
     const bloggerId = req.params.id;
     const blogger = await BloggerModel.findById(bloggerId);
     if (!blogger) {

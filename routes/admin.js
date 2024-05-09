@@ -35,7 +35,7 @@ const upload = multer({ storage: storage });
 //for Admin
 //------------------------------------------------------------------------
 // Route to get all admins
-router.get('/', async (req, res) => {
+router.get('/admin', async (req, res) => {
     try {
         res.json(await AdminModel.find().populate('account'));
     } catch (error) {
@@ -140,7 +140,7 @@ router.get('/admin/profile', verifyToken , checkAdmin, async (req, res) => {
     }
 });
 
-router.get('/editAdmin/:id', verifyToken , checkAdmin, async (req, res) => {
+router.get('/admin/editAdmin/:id', verifyToken , checkAdmin, async (req, res) => {
     const adminId = req.params.id;
     const admin = await AdminModel.findById(adminId);
     if (!admin) {
@@ -163,7 +163,7 @@ router.get('/editAdmin/:id', verifyToken , checkAdmin, async (req, res) => {
     
 });
 
-router.post('/editAdmin/:id', verifyToken , checkAdmin, upload.single('image'), async (req, res) => {
+router.post('/admin/editAdmin/:id', verifyToken , checkAdmin, upload.single('image'), async (req, res) => {
     const adminId = req.params.id;
     const admin = await AdminModel.findById(adminId);
     if (!admin) {

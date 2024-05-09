@@ -72,7 +72,7 @@ router.post('/category/add', verifyToken, checkAdmin, async (req, res) => {
 
 //---------------------------------------------------------------------------
 //edit 
-router.get('/edit/:id', verifyToken, checkAdmin, async (req, res) => {
+router.get('/category/edit/:id', verifyToken, checkAdmin, async (req, res) => {
     try{
         var id = req.params.id;
         var category = await CategoryModel.findById(id);

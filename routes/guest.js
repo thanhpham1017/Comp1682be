@@ -139,7 +139,7 @@ router.delete('/guest/delete/:id', verifyToken, checkAdmin, async (req, res) => 
 //---------------------------------------------------------------------------
 //edit admin
 // Render form for editing a specific admin
-router.get('/edit/:id', verifyToken, checkAdmin, async (req, res) => {
+router.get('/guest/edit/:id', verifyToken, checkAdmin, async (req, res) => {
     try {
         // Fetch admin details by ID
         const guestId = req.params.id;
@@ -234,7 +234,7 @@ router.get('/guest/profile', verifyToken, checkGuest, async (req, res) => {
     }
 });
 
-router.get('/editGuest/:id', verifyToken, checkGuest, async (req, res) => {
+router.get('/guest/editGuest/:id', verifyToken, checkGuest, async (req, res) => {
     const guestId = req.params.id;
     const guest = await GuestModel.findById(guestId);
     if (!guest) {
@@ -257,7 +257,7 @@ router.get('/editGuest/:id', verifyToken, checkGuest, async (req, res) => {
     
 });
 
-router.post('/editGuest/:id', verifyToken, checkGuest, upload.single('image'), async (req, res) => {
+router.post('/guest/editGuest/:id', verifyToken, checkGuest, upload.single('image'), async (req, res) => {
     const guestId = req.params.id;
     const guest = await GuestModel.findById(guestId);
     if (!guest) {
