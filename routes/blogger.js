@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 // Route to get all bloggers
 router.get('/blogger', verifyToken, checkAdmin, async (req, res) => {
     try {
-        res.json(await BloggerModel.find().populate('Account'));
+        res.json(await BloggerModel.find().populate('account'));
     } catch (error) {
         console.error("Error while fetching blogger list:", error);
         res.json({ success: false, error: "Internal Server Error" });

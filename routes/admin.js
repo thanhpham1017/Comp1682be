@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 // Route to get all admins
 router.get('/', async (req, res) => {
     try {
-        res.json(await AdminModel.find().populate('Account'));
+        res.json(await AdminModel.find().populate('account'));
     } catch (error) {
         console.error("Error while fetching admin list:", error);
         res.status(500).json({ success: false, error: "Internal Server Error" });
