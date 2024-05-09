@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 // Route to get all admins
 router.get('/guest', verifyToken, checkAdmin, async (req, res) => {
     try {
-        res.json(await GuestModel.find().populate('account'));
+        res.json(await GuestModel.find().populate('Account'));
     } catch (error) {
         console.error("Error while fetching guest list:", error);
         res.json({ success: false, error: "Internal Server Error" });
