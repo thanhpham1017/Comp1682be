@@ -20,7 +20,7 @@ app.use(express.json({ limit: '200mb' }));
 app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
 
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors({credentials:true,origin:'https://comp1682fe.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
@@ -32,7 +32,7 @@ const { Server } = require("socket.io");
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://comp1682fe.onrender.com",
     credentials: true,
   },
 });
